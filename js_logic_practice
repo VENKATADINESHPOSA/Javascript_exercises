@@ -1,0 +1,28 @@
+let arr = [1, 2, 4, 591, 392, 391, 2, 5, 10, 2, 1, 1, 1, 20, 20];
+
+const myFunction = (arr) => {
+	arr.sort(function (a,b) {
+	return a-b;
+});
+
+
+let counter = 0;
+arr.forEach(function (num, i) {
+	if (arr[i] === arr[i+1]) {
+		counter++;
+	}
+
+	else if (arr[i] !== arr[i+1] && arr[i] === arr[i-1]) {
+		arr[i - counter] = arr.slice(i-counter, i+1);
+		counter = 0;
+	}
+	
+})
+
+arr.forEach(function (num,index) {
+	while (arr[index][0] && arr[index][0] === arr[index +1]) {
+		arr.splice(index+1, 1);
+	}
+});
+return arr;
+}
